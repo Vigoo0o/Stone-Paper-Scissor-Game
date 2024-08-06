@@ -14,9 +14,6 @@ To run the executable on a Linux system:
 ```bash
 ./bin/my_program_linux.out
 
-### On Windows:
-To run the executable on a Windows system:
-```bash
-bin\my_program_windows.exe
+
 
 
