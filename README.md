@@ -87,5 +87,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Acknowledgments
 
-- Inspired by the classic game Stone, Paper, Scissors.
+- This game was developed as part of the online course **[Algorithim And Problem Solving Level 2]** from the **[Programming Advices]** website. Special thanks to the instructor for their support and valuable lessons.
 
