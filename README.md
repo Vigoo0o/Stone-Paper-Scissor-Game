@@ -32,7 +32,7 @@ Executable versions of the project are available for different operating systems
 
 1. Clone the repository to your local machine:
     ```bash
-    git clone https://github.com/yourusername/stone-paper-scissors.git
+    git clone https://github.com/tarek-salamaa/stone-paper-scissors.git
     cd stone-paper-scissors
     ```
 
