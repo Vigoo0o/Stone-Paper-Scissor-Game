@@ -20,7 +20,7 @@ This is a simple console-based implementation of the classic game Stone, Paper, 
 
 ## Getting Started
 
-## Executable Files
+### Executable Files
 
 Executable versions of the project are available for different operating systems in the `bin/` directory.
 
