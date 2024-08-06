@@ -32,13 +32,14 @@ Executable versions of the project are available for different operating systems
 
 1. Clone the repository to your local machine:
     ```bash
-    git clone https://github.com/tarek-salamaa/stone-paper-scissors.git
-    cd stone-paper-scissors
+    git clone https://github.com/tarek-salamaa/Stone-Paper-Scissor-Game.git
+    cd Stone-Paper-Scissor-Game
+    cd src
     ```
 
 2. Compile the program:
     ```bash
-    g++ -o stone-paper-scissors stone-paper-scissors.cpp
+    g++ -o stone-paper-scissors main.cpp
     ```
 
 3. Run the executable:
