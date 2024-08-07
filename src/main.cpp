@@ -15,7 +15,8 @@ struct stGameResult
     short DrawTimes;
     enWinner Winner;
     string WinnerName;
-
+    string PlayerChoises[10];
+    string ComputerChoises[10];
 };
 
 struct stRoundInfo
@@ -26,6 +27,18 @@ struct stRoundInfo
     enWinner Winner;
     string WinnerName;
 };
+
+void PrintChoises(string Choises[], int Length)
+{
+    for(int i = 0; i < Length; i++)
+    {
+        cout << Choises[i];
+
+        if(i != Length - 1)
+            cout << ", ";
+        
+    }
+}
 
 string Tabs(int NumberOfTaps)
 {
@@ -43,6 +56,12 @@ void ShowGameResults(stGameResult GameResults)
 {
     cout << Tabs(5) << "_________________[Game Results]_______________\n\n";
     cout << Tabs(5) << "Game Rounds        :" << GameResults.GameRound << endl;
+    cout << Tabs(5) << "Player Choises     :";
+    PrintChoises(GameResults.PlayerChoises, GameResults.GameRound);
+    cout << endl;
+    cout << Tabs(5) << "Computer Choises   :";
+    PrintChoises(GameResults.ComputerChoises, GameResults.GameRound);
+    cout << endl;
     cout << Tabs(5) << "Player Won Times   :" << GameResults.PlayerWinTimes << endl;
     cout << Tabs(5) << "Computer Won Times :" << GameResults.ComputerWinTimes << endl;
     cout << Tabs(5) << "Draw Won Times     :" << GameResults.DrawTimes << endl;
@@ -73,7 +92,7 @@ string WinnerName(enWinner Winner)
     return arrWinnerName[Winner - 1];
 }
 
-stGameResult FillGameResult(short GameRound, short PlayerWinTimes, short ComputerWinTimes, short DrawTimes)
+stGameResult FillGameResult(short GameRound, short PlayerWinTimes, short ComputerWinTimes, short DrawTimes, string PlayerChoises[], string ComputerChoises[])
 {
     stGameResult GameResult;
 
@@ -83,6 +102,12 @@ stGameResult FillGameResult(short GameRound, short PlayerWinTimes, short Compute
     GameResult.DrawTimes = DrawTimes;
     GameResult.Winner = WhoWinTheGame(PlayerWinTimes, ComputerWinTimes, DrawTimes);
     GameResult.WinnerName = WinnerName(GameResult.Winner);
+
+    for(int i = 0; i < GameRound; i++)
+    {
+        GameResult.PlayerChoises[i] = PlayerChoises[i];
+        GameResult.ComputerChoises[i] = ComputerChoises[i];
+    }
 
     return GameResult;
 }
@@ -167,12 +192,16 @@ stGameResult PlayGame(short HowManyRounds)
 {
     stRoundInfo RoundInfo;
     short PlayerWinTimes = 0, ComputerWinTimes = 0, DrawTimes = 0;
+    string PlayerChoises[HowManyRounds];
+    string ComputerChoises[HowManyRounds];
     for(int GameRound = 1; GameRound <= HowManyRounds; GameRound++)
     {
         cout << "\nRound ["<< GameRound << "] Begin:\n";
         RoundInfo.RoundNumber = GameRound;
         RoundInfo.PlayerChoise = ReadPlayerChoise();
+        PlayerChoises[GameRound - 1] = ChoisesName(RoundInfo.PlayerChoise);
         RoundInfo.ComputerChoise = GetComputrChoise();
+        ComputerChoises[GameRound - 1] = ChoisesName(RoundInfo.ComputerChoise);
         RoundInfo.Winner = WhoRoundWin(RoundInfo.PlayerChoise, RoundInfo.ComputerChoise);
         RoundInfo.WinnerName = WinnerName(RoundInfo.Winner);
         RoundResults(RoundInfo);
@@ -185,7 +214,7 @@ stGameResult PlayGame(short HowManyRounds)
             DrawTimes++;
     }
 
-    return FillGameResult(HowManyRounds, PlayerWinTimes, ComputerWinTimes, DrawTimes);
+    return FillGameResult(HowManyRounds, PlayerWinTimes, ComputerWinTimes, DrawTimes, PlayerChoises, ComputerChoises);
 }
 
 void StartGame()
