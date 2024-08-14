@@ -8,8 +8,9 @@ enum enWinner {Player = 1, Computer = 2, Draw = 3};
 enum enChoise {Stone = 1, Paper = 2, Scissors = 3};
 
 // Functions Declaration
-
 string Tabs(int);
+
+string ChoisesName(enChoise);
 
 struct stGameResult
 {
@@ -42,18 +43,6 @@ void PrintChoises(string Choises[], int Length)
             cout << ", ";
         
     }
-}
-
-string Tabs(int NumberOfTaps)
-{
-    string T = "";
-
-    for(int i = 0; i < NumberOfTaps; i++)
-    {
-        T += "\t";
-    }
-
-    return T;
 }
 
 void ShowGameResults(stGameResult GameResults)
@@ -114,12 +103,6 @@ stGameResult FillGameResult(short GameRound, short PlayerWinTimes, short Compute
     }
 
     return GameResult;
-}
-
-string ChoisesName(enChoise Choise)
-{
-    string ArrChoises[] {"Stone", "Paper", "Scissors"};
-    return ArrChoises[Choise - 1];
 }
 
 void RoundResults(stRoundInfo RoundResults)
@@ -242,3 +225,23 @@ int main()
     StartGame();
     return 0;
 }
+
+// Functions Difinition
+string Tabs(int NumberOfTaps)
+{
+    string T = "";
+
+    for(int i = 0; i < NumberOfTaps; i++)
+    {
+        T += "\t";
+    }
+
+    return T;
+}
+
+string ChoisesName(enChoise Choise)
+{
+    string ArrChoises[] {"Stone", "Paper", "Scissors"};
+    return ArrChoises[Choise - 1];
+}
+
