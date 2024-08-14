@@ -7,6 +7,10 @@ enum enWinner {Player = 1, Computer = 2, Draw = 3};
 
 enum enChoise {Stone = 1, Paper = 2, Scissors = 3};
 
+// Functions Declaration
+
+string Tabs(int);
+
 struct stGameResult
 {
     short GameRound;
